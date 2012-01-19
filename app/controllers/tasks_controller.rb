@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   expose(:task)
   expose(:tasks) { Task.all }
