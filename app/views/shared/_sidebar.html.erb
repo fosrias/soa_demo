@@ -1,10 +1,10 @@
-<div class="ui-widget-header ui-corner-all"><h1>Menu</h1></div>
+<div class="ui-widget-header ui-corner-all center-txt"><h1>Menu</h1></div>
 <% menu_items.each do |menu_item| %>
     <p>
       <% if menu_item.link.blank? %>
-          <%= label_tag(menu_item.name) %>
+          <%= label_tag(menu_item.name, nil, :class => "menu-item-static") %>
       <% else %>
-          <%= link_to(menu_item.name, menu_item.link) %>
+          <%= link_to(menu_item.name, menu_item.link, :class => 'link_class') %>
       <% end %>
     </p>
 <% end %>

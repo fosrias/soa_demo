@@ -4,15 +4,15 @@
   <title>SOA Demo</title>
   <meta charset="utf-8">
   <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-    <div id="sidebar" class="blah">
+<body class="dsp-none">
+    <div id="sidebar" class="ui-widget-content dsp-none">
       <%= render 'shared/sidebar' %>
     </div>
-    <div id="content">
+    <div id="content dsp-none">
       <%= yield %>
     </div>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>
