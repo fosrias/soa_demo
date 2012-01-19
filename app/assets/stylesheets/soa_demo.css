@@ -1,8 +1,30 @@
 /* css for medidata soa demo */
 
-.menu-item-static{
+#sidebar-content {
+    width: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+/*    overflow-y: auto; */
+}
+
+#content {
+    float: left;
+}
+
+.menu-item-static {
     font-weight: bold;
-    color: #000;
+    color: #1C77AF;
+    padding-left: 4px;
+}
+
+.menu-item-link {
+    text-decoration: none;
+    color:#2E6E9E !important;
+    cursor: pointer;
+}
+
+.menu-item-link:hover {
+    color:#E47B0E;
 }
 
 .center-txt{
@@ -11,4 +33,8 @@
 
 .dsp-none {
     display: none;
+}
+
+.float-left {
+    float: left;
 }
