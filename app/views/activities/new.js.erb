@@ -1,4 +1,3 @@
-$("#<%= activity.td_id %>").html('<span>hello</span>');
-var test =   $('<span>hello world</span>').dialog();
+var test =   $('<%= escape_javascript(render 'shared/activity_form')%>').dialog();
 
 
