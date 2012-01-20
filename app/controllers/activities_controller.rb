@@ -1,8 +1,18 @@
 class ActivitiesController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :js
+
+  before_filter :show_activity, :only => :new
 
   expose(:activity)
   expose(:activities) { Activity.all }
+
+  def new
+    respond_to do |format|
+      format.js do
+        render :new
+      end
+    end
+  end
 
   # POST /activities
   # POST /activities.json
@@ -23,5 +33,10 @@ class ActivitiesController < ApplicationController
   def destroy
     activity.destroy
     respond_with(activity)
+  end
+
+  private
+  def show_activity
+    true
   end
 end

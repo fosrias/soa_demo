@@ -54,4 +54,6 @@
 
 //= require soa_demo
 
+//= require soa_ajax
+
 //= require_tree .
