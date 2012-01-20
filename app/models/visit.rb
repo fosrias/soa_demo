@@ -4,4 +4,6 @@ class Visit < ActiveRecord::Base
 
   has_many :activities
   has_many :visits, :through => :activities
+
+  scope :ordered, order("day ASC")
 end
