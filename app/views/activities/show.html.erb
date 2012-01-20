@@ -1,15 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Purpose:</strong>
-  <%= activity.purpose %>
-</p>
-
-<p>
-  <strong>Footnotes:</strong>
-  <%= activity.footnotes %>
-</p>
-
+<%= render 'show' %>
 
 <%= link_to 'Edit', edit_activity_path(activity) %> |
 <%= link_to 'Back', activities_path %>
