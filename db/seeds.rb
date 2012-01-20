@@ -19,3 +19,9 @@ end
 # Dummy data to generate oversized menu
 MenuItem.create!(:name => "Favorites", :link => nil, :order => 7)
 (1..25).each { |i| MenuItem.create!(:name => "Link#{i}", :link => "#", :order => 7 + i)}
+
+# Dummy Tasks
+(1..20).each { |i| Task.create!(:name => "Task#{i}") }
+
+# Dummy Visits
+(1..20).each { |i| Visit.create!(:name => "Visit#{i}", :day => i) }
