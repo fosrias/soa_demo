@@ -1,26 +1,30 @@
 <div id="title-bar" class="ui-widget-header ui-corner-bl ui-corner-br center-txt">
   <h2>Schedule of Activities</h2>
 </div>
-<table>
-  <thead>
-    <th/>
-    <% visits.each do |visit| %>
-        <th><%= visit.name %></th>
-    <% end %>
-  </thead>
-  <tbody>
-    <% tasks.each do |task| %>
-        <tr>
-          <td><%= task.name %></td>
-            <% visits.each do |visit| %>
-                <% config = activity_config(task, visit) %>
-                <td id="<%= config[:id] %>" class="<%= config[:html_class] %>">
-                  <% if config[:activity] %>
-                      <span><%= config[:activity].id %></span>
-                  <% end %>
-                </td>
-            <% end %>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="soa-view">
+    <div id="soa-container">
+        <table>
+        <thead>
+        <th/>
+        <% visits.each do |visit| %>
+            <th><%= visit.name %></th>
+        <% end %>
+        </thead>
+        <tbody>
+        <% tasks.each do |task| %>
+            <tr>
+              <td><%= task.name %></td>
+                <% visits.each do |visit| %>
+                    <% config = activity_config(task, visit) %>
+                    <td id="<%= config[:id] %>" class="<%= config[:html_class] %>">
+                      <% if config[:activity] %>
+                          <span><%= config[:activity].id %></span>
+                      <% end %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+        </tbody>
+        </table>
+    </div>
+</div>
