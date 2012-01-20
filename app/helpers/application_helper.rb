@@ -2,14 +2,22 @@ module ApplicationHelper
 
   def activity_config(task, visit)
     id = "#{task.id}_#{visit.id}"
-    html_class = "activity-missing"
+    html_classes = []
 
-    #unless task.visits.empty?
-     activity = nil #task.activities.select { |activity| activity.visit_id == visit_id }
-      html_class = "activity"
-      html_class += " no-purpose" #unless activity.purpose
-      html_class += " footnotes" #if activity.footnotes
-    #end
-    {id: id, html_class: html_class, activity: activity}
+    unless task.visits.empty?
+      activity = task.activities.select do |activity|
+
+        activity.visit_id == visit_id
+      end
+      html_classes = html_classes_for(activity)
+    end
+    {id: id, html_classes: html_classes, activity: activity}
+  end
+
+  def html_classes_for(activity)
+    html_classes = []
+    html_classes.push("activity")
+    html_classes.push("no-purpose") unless activity.purpose
+    html_classes.push("footnotes") if activity.footnotes
   end
 end

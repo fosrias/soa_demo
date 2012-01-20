@@ -5,18 +5,40 @@ $(function() {
             url: '/activities/new.js',
             dataType: 'script',
             data: {activity: {task_id: taskId, visit_id: visitId}},
-            success: setDoubleClickHandlers
+            success: setClickHandlers
         });
     };
 
-    function setDoubleClickHandlers() {
+    function showDetail(type, id) {
+        $.ajax({
+            url: '/' + type + '/' + id +'.js',
+            dataType: 'script'
+        });
+    };
+
+    function setClickHandlers() {
         $('td').unbind('dblclick');
+//        $('td').unbind('click');
+//
+//        $('td').click(function() {
+//            var span = $(this).children('.activity-id')[0];
+//            var type = 'activity'
+//            if (span) {
+//                if ($(this).class() == 'ui-widget-header task-descriptor') {
+//                  type = 'task'
+//                } else if ($(this).class() == 'ui-widget-header table-header') {
+//                  type = 'visit'
+//                }
+//                showDetail(type, span.text());
+//            };
+//        });
+
         $('td').dblclick(function() {
-            id = $(this).attr('id');
-            ids = id.split('_');
+            var id = $(this).attr('id');
+            var ids = id.split('_');
             createActivity(ids[0], ids[1]);
         });
     };
 
-    setDoubleClickHandlers();
+    setClickHandlers();
 });
