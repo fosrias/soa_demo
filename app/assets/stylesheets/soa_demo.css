@@ -14,7 +14,7 @@
     float: left;
 }
 
-#soa-view {;
+#soa-view {
     overflow:  hidden;
     position: relative;
     width: 70%;
@@ -48,3 +48,8 @@
 .float-left {
     float: left;
 }
+.activity{ background: url(images/green-chk.png) 50% 50% no-repeat; z-index: 20;}
+
+.no-purpose { background: url(images/red-dash.png) 70% 70% no-repeat; z-index: 15;}
+
+.footnotes { background: url(images/blu-tri.png) 0% 0% no-repeat;  z-index: 10;}

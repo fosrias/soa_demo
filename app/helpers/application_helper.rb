@@ -4,12 +4,12 @@ module ApplicationHelper
     id = "#{task.id}_#{visit.id}"
     html_class = "activity-missing"
 
-    unless task.visits.empty?
-      activity = task.activities.select { |activity| activity.visit_id == visit_id }
+    #unless task.visits.empty?
+     activity = nil #task.activities.select { |activity| activity.visit_id == visit_id }
       html_class = "activity"
       html_class += " no-purpose" #unless activity.purpose
-      html_class += " footnotes" if activity.footnotes
-    end
+      html_class += " footnotes" #if activity.footnotes
+    #end
     {id: id, html_class: html_class, activity: activity}
   end
 end

@@ -7,13 +7,13 @@
         <thead>
         <th/>
         <% visits.each do |visit| %>
-            <th><%= visit.name %></th>
+            <th class="ui-widget-header table-header"><%= visit.name %> </th>
         <% end %>
         </thead>
         <tbody>
         <% tasks.each do |task| %>
             <tr>
-              <td><%= task.name %></td>
+              <td class="ui-widget-header task-descriptor"><%= task.name %> </td>
                 <% visits.each do |visit| %>
                     <% config = activity_config(task, visit) %>
                     <td id="<%= config[:id] %>" class="<%= config[:html_class] %>">
