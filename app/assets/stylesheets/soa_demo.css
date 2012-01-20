@@ -1,15 +1,25 @@
 /* css for medidata soa demo */
 
+#sidebar {
+    float: left;
+    overflow:  hidden;
+}
+
 #sidebar-content {
-    width: 200px;
-    overflow-x: hidden;
+    width: 100%;
     overflow-y: scroll;
-/*    overflow-y: auto; */
 }
 
 #content {
     float: left;
 }
+
+#soa-view {;
+    overflow:  hidden;
+    position: relative;
+    width: 70%;
+}
+
 
 .menu-item-static {
     font-weight: bold;
