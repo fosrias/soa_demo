@@ -1,21 +1,20 @@
 module ApplicationHelper
 
-  def activity_config(task, visit)
+  def cell_config(task, visit)
     id = "#{task.id}_#{visit.id}"
-    html_classes = []
+    activity = nil
 
-    unless task.visits.empty?
-      activity = task.activities.select do |activity|
-
-        activity.visit_id == visit_id
-      end
-      html_classes = html_classes_for(activity)
+    if task.visits.any?
+      activity = task.activities.select { |a| a.visit_id == visit.id }.first
+      id = activity.cell_id if activity
     end
-    {id: id, html_classes: html_classes, activity: activity}
+
+    {id: id, html_classes: html_classes_for(activity), activity: activity}
   end
 
   def html_classes_for(activity)
     html_classes = []
+    return html_classes unless activity
     html_classes.push("activity")
     html_classes.push("no-purpose") unless activity.purpose
     html_classes.push("footnotes") if activity.footnotes
