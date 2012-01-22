@@ -1,0 +1,2 @@
+var test = $('<%= escape_javascript(render 'form')%>')
+        .dialog({modal: true, title: '<%= activity.new_record? ? 'New' : "Edit" %> Activity'});
