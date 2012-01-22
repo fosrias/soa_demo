@@ -1,44 +1,77 @@
 $(function() {
 
+    var clickTimeout
+    var count = 0;
+
     function createActivity(taskId, visitId) {
         $.ajax({
             url: '/activities/new.js',
             dataType: 'script',
-            data: {activity: {task_id: taskId, visit_id: visitId}},
-            success: setClickHandlers
+            data: {activity: {task_id: taskId, visit_id: visitId}}
         });
-    };
+    }
+
+    function updateActivity(id) {
+        $.ajax({
+            url: '/activities/' + id + '/edit.js',
+            dataType: 'script'
+        });
+    }
 
     function showDetail(type, id) {
         $.ajax({
-            url: '/' + type + '/' + id +'.js',
+            url: '/' + type + '/' + id + '.js',
             dataType: 'script'
         });
-    };
+    }
 
-    function setClickHandlers() {
-        $('td').unbind('dblclick');
-//        $('td').unbind('click');
-//
-//        $('td').click(function() {
-//            var span = $(this).children('.activity-id')[0];
-//            var type = 'activity'
-//            if (span) {
-//                if ($(this).class() == 'ui-widget-header task-descriptor') {
-//                  type = 'task'
-//                } else if ($(this).class() == 'ui-widget-header table-header') {
-//                  type = 'visit'
-//                }
-//                showDetail(type, span.text());
-//            };
-//        });
+    function splitId(element) {
+        var id = element.attr('id');
+        return id.split('_');
+    }
 
-        $('td').dblclick(function() {
-            var id = $(this).attr('id');
-            var ids = id.split('_');
+    function clickTableData(element) {
+        var split = splitId($(element));
+        if (split[0] == 'task') {
+            showDetail('tasks', split[1]);
+        } else {
+            var span = $(element).children('.activity-id')[0];
+            if (span) {
+                showDetail('activities', $(span).text());
+            }
+        }
+    }
+
+    function clickTableHeader() {
+        var split = splitId($(this));
+
+        if (split[0] == 'visit')
+            showDetail('visits', split[1]);
+    }
+
+    function dblclickTableData() {
+        clearTimeout(clickTimeout);
+        var split = splitId($(this));
+        if (split[0] == 'task')
+            return;
+
+        var span = $(this).children('.activity-id')[0];
+
+        if (span) {
+            updateActivity($(span).text());
+        } else {
+            var ids = splitId($(this))
             createActivity(ids[0], ids[1]);
-        });
-    };
+        }
+    }
 
-    setClickHandlers();
+    $('tbody').delegate('td', 'click', function() {
+        clearTimeout(clickTimeout);
+        var that = this;
+        clickTimeout = setTimeout(function() {
+            clickTableData(that);
+        }, 250);
+    });
+    $('thead').delegate('th', 'click', clickTableHeader);
+    $('tbody').delegate('td', 'dblclick', dblclickTableData);
 });
