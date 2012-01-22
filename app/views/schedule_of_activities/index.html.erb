@@ -2,33 +2,33 @@
   <h2>Schedule of Activities</h2>
 </div>
 <div id="soa-view">
-    <div id="soa-container">
-        <table>
-        <thead>
-        <th/>
-        <% visits.each do |visit| %>
-            <th class="ui-widget-header table-header"><%= visit.name %> </th>
-        <% end %>
-        </thead>
-        <tbody>
-        <% tasks.each do |task| %>
-            <tr>
-              <td class="ui-widget-header task-descriptor"><%= task.name %> </td>
-                <% visits.each do |visit| %>
-                    <% config = activity_config(task, visit) %>
-                    <td id="<%= config[:id] %>">
-                      <% if config[:activity] %>
-                          <span class="activity-id"><%= config[:activity].id %></span>
-                      <% end %>
-                      <% config[:html_classes].each do |html_class| %>
-                        <span class="<%= html_class %>"/>
-                      <% end %>
-                    </td>
-                <% end %>
-            </tr>
-        <% end %>
-        </tbody>
-        </table>
-    </div>
+  <div id="soa-container">
+    <table>
+      <thead>
+      <th id="blank-corner"/>
+      <% visits.each do |visit| %>
+          <th id="visit_<%= visit.id %>" class="ui-widget-header table-header"><%= visit.name %></th>
+      <% end %>
+      </thead>
+      <tbody>
+      <% tasks.each do |task| %>
+          <tr>
+            <td id="task_<%= task.id %>" class="ui-widget-header task-descriptor"><%= task.name %></td>
+            <% visits.each do |visit| %>
+                <% config = cell_config(task, visit) %>
+                <td id="<%= config[:id] %>" class="activity-cell">
+                  <% if config[:activity] %>
+                      <span class="activity-id"><%= config[:activity].id %></span>
+                  <% end %>
+                  <% config[:html_classes].each do |html_class| %>
+                      <span class="<%= html_class %>"/>
+                  <% end %>
+                </td>
+            <% end %>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div id="detail-pane"/>
