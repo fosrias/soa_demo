@@ -1,0 +1,7 @@
+<% html = "<span class=\"activity-id\">#{activity.id}</span>" %>
+<% html << html_classes_for(activity).inject("") { |r, c| r << "<span class=\"#{c}\"/>" } %>
+$("#<%= activity.cell_id %>").html('<%= escape_javascript(html).html_safe %>');
+
+<%= render 'shared/show' %>
+
+test.remove();
