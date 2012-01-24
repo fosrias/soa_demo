@@ -5,7 +5,7 @@
   <div id="soa-container">
     <table>
       <thead>
-      <th id="blank-corner"/>
+      <th id="blank-corner"></th>
       <% visits.each do |visit| %>
           <th id="visit_<%= visit.id %>" class="ui-widget-header table-header"><%= visit.name %></th>
       <% end %>
@@ -21,7 +21,7 @@
                       <span class="activity-id"><%= config[:activity].id %></span>
                   <% end %>
                   <% config[:html_classes].each do |html_class| %>
-                      <span class="<%= html_class %>"/>
+                      <span class="<%= html_class %>"></span>
                   <% end %>
                 </td>
             <% end %>
