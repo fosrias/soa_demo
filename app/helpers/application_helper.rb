@@ -15,8 +15,9 @@ module ApplicationHelper
   def html_classes_for(activity)
     html_classes = []
     return html_classes unless activity
-    html_classes.push("activity")
-    html_classes.push("no-purpose") unless activity.purpose
-    html_classes.push("footnotes") if activity.footnotes
+    #html_classes.push("activity")
+    html_classes.push("no-purpose") if activity.purpose.blank?
+    html_classes.push("footnotes") unless activity.footnotes.blank?
+    html_classes
   end
 end

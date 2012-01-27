@@ -67,3 +67,30 @@ td {
     border: 1px solid rgb(107, 165, 208);
     width: 70px;
 }
+
+.activity {
+    background: url(images/green-chk.png) 50% 50% no-repeat;
+}
+.no-purpose {
+    valign: bottom;
+    float: right;
+    margin: 0px 5px 10px 0px;
+    display: block;
+    width: 9px;
+    height: 4px;
+    background: url(images/red-dash.png) 0% 0% no-repeat; }
+
+.activity-id {
+    display: none;
+    margin: auto;
+    valign: center;
+    text-align: center;
+}
+
+.footnotes {
+    display: block;
+    valign: top;
+    width: 11px;
+    height: 11px;
+    background: url(images/blu-tri.png) 0% 0% no-repeat;
+}

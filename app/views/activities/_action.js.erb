@@ -1,5 +1,7 @@
+<% cell = "<td id=\"#{activity.cell_id}\" class=\"activity\"></td>"%>
 <% html = "<span class=\"activity-id\">#{activity.id}</span>" %>
 <% html << html_classes_for(activity).inject("") { |r, c| r << "<span class=\"#{c}\"/>" } %>
+$("#<%= activity.cell_id %>").replaceWith('<%= escape_javascript(cell).html_safe %>');
 $("#<%= activity.cell_id %>").html('<%= escape_javascript(html).html_safe %>');
 
 <%= render 'shared/show' %>

@@ -16,9 +16,10 @@
             <td id="task_<%= task.id %>" class="ui-widget-header task-descriptor"><%= task.name %></td>
             <% visits.each do |visit| %>
                 <% config = cell_config(task, visit) %>
-                <td id="<%= config[:id] %>" class="activity-cell">
-                  <% if config[:activity] %>
-                      <span class="activity-id"><%= config[:activity].id %></span>
+                <% activity = config[:activity] %>
+                <td id="<%= config[:id] %>" class="<%= activity ? 'activity' : 'activity-cell' %>">
+                  <% if activity %>
+                      <span class="activity-id"><%= activity.id %></span>
                   <% end %>
                   <% config[:html_classes].each do |html_class| %>
                       <span class="<%= html_class %>"></span>
